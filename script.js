@@ -11,7 +11,15 @@ function createString(testo){
     canva.appendChild(child)
     child.setAttribute("id",`test${counter}`);
     child.setAttribute("class","test")
-    child.innerHTML = testo
+    
+
+    if (testo === "mmg"){
+        child.innerHTML = "***"
+    } else if (testo === "te amo") {
+        child.innerHTML = "te odio hijo de la gran puta"
+    } else {
+        child.innerHTML = testo
+    }
     changeColor(child)
   
 }
