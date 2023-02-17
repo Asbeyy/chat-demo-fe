@@ -3,6 +3,7 @@ const button = document.getElementById("button")
 const input = document.getElementById("input")
 let counter = 0;
 let stat = 1;
+let errCounter;
 
 function createString(testo){
     counter += 1
@@ -11,15 +12,7 @@ function createString(testo){
     canva.appendChild(child)
     child.setAttribute("id",`test${counter}`);
     child.setAttribute("class","test")
-    
-
-    if (testo === "mmg"){
-        child.innerHTML = "***"
-    } else if (testo === "te amo") {
-        child.innerHTML = "te odio hijo de la gran puta"
-    } else {
-        child.innerHTML = testo
-    }
+    child.innerHTML = testo
     changeColor(child)
   
 }
@@ -34,13 +27,25 @@ function changeColor(child){
 }
 
 button.onclick = function(){
+    if (input.value === ""){
+        errCounter++
+        return;
+    } else {
     createString(input.value)
+    input.value = ""
+    }
 }
 
 document.addEventListener("keypress", function(event) {
     if (event.keyCode == 13) {
+        if (input.value === ""){
+            return;
+        } else {
         createString(input.value)
         input.value = ""
+        }
     }
 });
-//createString("TEST")
+
+
+
